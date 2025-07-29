@@ -1,0 +1,6 @@
+Flask
+psycopg2-binary
+requests
+python-dotenv
+pandas>=1.3.0
+openpyxl

@@ -1,0 +1,32 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Smart Dashboard{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- 🌐 Navbar -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <h1>Smart Dashboard</h1>
+      <p>Live: Weather | Crypto | Stocks | News</p>
+    </div>
+    <div class="navbar-right">
+      <a href="{{ url_for('export') }}">📤 Export Logs</a>
+      <a href="{{ url_for('logout') }}">🔓 Logout</a>
+    </div>
+  </header>
+
+  <!-- 🔽 Page Content -->
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+</body>
+</html>

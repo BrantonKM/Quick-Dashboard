@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+  <!-- 🌦 Weather Card -->
+  <div class="card">
+    <h2>🌦 Weather</h2>
+    {% if weather %}
+      <p><strong>{{ weather.city }}</strong></p>
+      <p>Temperature: {{ weather.temp }}°C</p>
+      <p>Condition: {{ weather.description }}</p>
+    {% else %}
+      <p>Weather data not available.</p>
+    {% endif %}
+  </div>
+
+  <!-- ₿ Crypto List -->
+  <div class="card">
+    <h2>₿ Top Cryptos</h2>
+    {% if cryptos %}
+      <ul>
+        {% for coin in cryptos %}
+          <li><strong>{{ coin.name }}</strong>: ${{ coin.current_price }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Crypto data not available.</p>
+    {% endif %}
+  </div>
+
+  <!-- 📊 Crypto Chart -->
+  <div class="card">
+    <h2>📊 Crypto Prices Chart</h2>
+    <canvas id="cryptoChart"></canvas>
+  </div>
+
+  <!-- 📈 Stock Prices List -->
+  <div class="card">
+    <h2>📈 Stock Market</h2>
+    {% if stocks %}
+      <ul>
+        {% for symbol, stock in stocks.items() %}
+          <li><strong>{{ symbol }}</strong>: ${{ stock.price }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Stock data not available.</p>
+    {% endif %}
+  </div>
+
+  <!-- 📈 Stock Prices Chart -->
+  <div class="card">
+    <h2>📉 Stock Prices Chart</h2>
+    <canvas id="stockChart"></canvas>
+  </div>
+  <div class="card">
+    <h2>📄 Download Custom Report</h2>
+    <form action="{{ url_for('report') }}" method="get" class="report-form">
+      <label for="section">Section:</label>
+      <select name="section" id="section">
+       <option value="">All</option>
+       <option value="weather">Weather</option>
+       <option value="crypto">Crypto</option>
+       <option value="stocks">Stocks</option>
+       <option value="news">News</option>
+      </select>
+
+      <label for="start">Start Date:</label>
+      <input type="date" name="start" id="start">
+
+      <label for="end">End Date:</label>
+      <input type="date" name="end" id="end">
+
+      <button type="submit">📥 Download CSV</button>
+    </form>
+  </div>
+
+  <!-- 📰 News -->
+  <div class="card">
+    <h2>📰 Latest News</h2>
+    {% if news %}
+      {% for article in news %}
+        <div class="news-article">
+          <a href="{{ article.url }}" target="_blank">{{ article.title }}</a>
+          <p><small>{{ article.source }}</small></p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>News not available.</p>
+    {% endif %}
+  </div>
+
+  <!-- Chart Scripts -->
+  <script>
+    const cryptoData = {{ cryptos | tojson | safe }};
+    const stockData = {{ stocks | tojson | safe }};
+
+    const cryptoNames = cryptoData.map(c => c.name);
+    const cryptoPrices = cryptoData.map(c => c.current_price);
+
+    new Chart(document.getElementById("cryptoChart"), {
+      type: "bar",
+      data: {
+        labels: cryptoNames,
+        datasets: [{
+          label: "Price (USD)",
+          data: cryptoPrices,
+          backgroundColor: "#0a9396"
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: "Top Cryptocurrencies" }
+        }
+      }
+    });
+
+    const stockNames = Object.keys(stockData);
+    const stockPrices = Object.values(stockData).map(s => s.price);
+
+    new Chart(document.getElementById("stockChart"), {
+      type: "line",
+      data: {
+        labels: stockNames,
+        datasets: [{
+          label: "Stock Price (USD)",
+          data: stockPrices,
+          borderColor: "#005f73",
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true },
+          title: { display: true, text: "Major Tech Stocks" }
+        }
+      }
+    });
+  </script>
+
+{% endblock %}
