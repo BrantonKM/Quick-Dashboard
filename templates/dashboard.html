@@ -3,9 +3,9 @@
 
 {% block content %}
 
-  <!-- 🌦 Weather Card -->
+  <!--  Weather Card -->
   <div class="card">
-    <h2>🌦 Weather</h2>
+    <h2> Weather</h2>
     {% if weather %}
       <p><strong>{{ weather.city }}</strong></p>
       <p>Temperature: {{ weather.temp }}°C</p>
@@ -29,15 +29,15 @@
     {% endif %}
   </div>
 
-  <!-- 📊 Crypto Chart -->
+  <!--  Crypto Chart -->
   <div class="card">
-    <h2>📊 Crypto Prices Chart</h2>
+    <h2> Crypto Prices Chart</h2>
     <canvas id="cryptoChart"></canvas>
   </div>
 
-  <!-- 📈 Stock Prices List -->
+  <!--  Stock Prices List -->
   <div class="card">
-    <h2>📈 Stock Market</h2>
+    <h2> Stock Market</h2>
     {% if stocks %}
       <ul>
         {% for symbol, stock in stocks.items() %}
@@ -49,13 +49,13 @@
     {% endif %}
   </div>
 
-  <!-- 📈 Stock Prices Chart -->
+  <!--  Stock Prices Chart -->
   <div class="card">
-    <h2>📉 Stock Prices Chart</h2>
+    <h2> Stock Prices Chart</h2>
     <canvas id="stockChart"></canvas>
   </div>
   <div class="card">
-    <h2>📄 Download Custom Report</h2>
+    <h2> Download Custom Report</h2>
     <form action="{{ url_for('report') }}" method="get" class="report-form">
       <label for="section">Section:</label>
       <select name="section" id="section">
@@ -72,13 +72,13 @@
       <label for="end">End Date:</label>
       <input type="date" name="end" id="end">
 
-      <button type="submit">📥 Download CSV</button>
+      <button type="submit"> Download CSV</button>
     </form>
   </div>
 
-  <!-- 📰 News -->
+  <!--  News -->
   <div class="card">
-    <h2>📰 Latest News</h2>
+    <h2> Latest News</h2>
     {% if news %}
       {% for article in news %}
         <div class="news-article">
