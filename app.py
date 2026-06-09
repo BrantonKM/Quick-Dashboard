@@ -159,7 +159,7 @@ def report():
 def dashboard():
     create_log_table()
 
-    # 🌦 Weather
+    # Weather
     try:
         weather_data = get_weather()
         print("Weather API response:", weather_data)  # Add this
@@ -182,7 +182,7 @@ def dashboard():
     except Exception as e:
         print("Crypto fetch error:", e)
 
-    # 📈 Stocks
+    # Stocks
     stock_symbols = ["AAPL", "MSFT", "GOOGL"]
     stocks = {}
     try:
@@ -195,7 +195,7 @@ def dashboard():
     except Exception as e:
         print("Stock fetch error:", e)
 
-    # 📰 News
+    # News
     news = []
     try:
         url = f"https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey={NEWS_KEY}"
