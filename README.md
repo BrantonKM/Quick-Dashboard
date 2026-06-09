@@ -1,10 +1,10 @@
-📊 Quick Dashboard
+## Quick Dashboard
 
 A Flask-based Admin Analytics Dashboard for monitoring and exporting real-time data from multiple sources such as Weather, Crypto, Stocks, and News.
 
 Built with PostgreSQL, Docker, and Pandas, this project demonstrates modular backend design, containerized deployment, and efficient data reporting workflows.
 
-🚀 Project Overview
+## Project Overview
 
 Quick Dashboard is a lightweight web-based analytics tool designed for administrative and data teams who need structured visibility into system logs and external data feeds.
 
@@ -22,30 +22,30 @@ Deploy locally or in a containerized environment
 
 The system emphasizes clean architecture, maintainability, and scalability for future enhancements.
 
-⚙️ Core Features
+-Core Features
 
-🔐 Admin Authentication (session-based login)
+-Admin Authentication (session-based login)
 
-📦 Section Filtering (Weather, Crypto, Stocks, News)
+-Section Filtering (Weather, Crypto, Stocks, News)
 
-📅 Date-Range Report Generation
+-Date-Range Report Generation
 
-📊 Structured Tabular Log View
+-Structured Tabular Log View
 
-📤 Excel Export (.xlsx)
+-Excel Export (.xlsx)
 
-🐳 Dockerized Deployment
+-Dockerized Deployment
 
-🧪 Debug-Friendly Logging
+-Debug-Friendly Logging
 
-🛠️ Tech Stack
+##Tech Stack
 Layer	Technology
 Backend	Python, Flask
 Database	PostgreSQL
 Data Engine	Pandas, OpenPyXL
 Frontend	HTML5, CSS3
 Deployment	Docker, Docker Compose
-📁 Project Structure
+##Project Structure
 quick-dashboard/
 │
 ├── app.py                  # Main Flask application
@@ -73,30 +73,19 @@ quick-dashboard/
 │
 ├── migrations/             # Database migrations (Alembic)
 └── .gitignore
-🖥️ Setup & Installation
-1️⃣ Clone the Repository
+##Setup & Installation
+1. Clone the Repository
 git clone https://github.com/your-username/quick-dashboard.git
 cd quick-dashboard
-2️⃣ Configure Environment Variables
-
-Create a .env file in the root directory:
-
-FLASK_APP=app.py
-FLASK_ENV=development
-
-POSTGRES_DB=quickdashboarddb
-POSTGRES_USER=admin
-POSTGRES_PASSWORD=admin123
-
-DATABASE_URL=postgresql://admin:admin123@db:5432/quickdashboarddb
-SECRET_KEY=your-secure-secret
-3️⃣ Build & Run with Docker
+2. Configure Environment Variables
+Create a .env file in the root directory
+3. Build & Run with Docker
 docker-compose up --build
 
 Access the application at:
 
 http://localhost:5000
-📤 Exporting Reports
+##Exporting Reports
 
 Navigate to:
 
@@ -114,13 +103,13 @@ Define a date range
 
 Download structured .xlsx reports
 
-🧪 Example PostgreSQL Query
+##Example PostgreSQL Query
 SELECT *
 FROM dashboard_logs
 WHERE section = 'crypto'
 AND fetched_at BETWEEN '2025-07-01' AND '2025-07-29'
 ORDER BY fetched_at DESC;
-🛡️ Security Considerations
+##Security Considerations
 
 The current version uses a basic admin authentication system.
 
@@ -134,27 +123,27 @@ Disable debug mode
 
 Use environment-based secrets management
 
-📈 Future Improvements
+1. Future Improvements
 
-✅ Pagination for large datasets
+2. Pagination for large datasets
 
-✅ Multiple export formats (CSV / PDF)
+3. Multiple export formats (CSV / PDF)
 
-🔒 Multi-user authentication & RBAC
+4. Multi-user authentication & RBAC
 
-📊 Integrated data visualizations
+5. Integrated data visualizations
 
-🌐 Cloud deployment (Render / AWS EC2 / Railway)
+6. Cloud deployment (Render / AWS EC2 / Railway)
 
-📡 Background job scheduling for automated data ingestion
+7. Background job scheduling for automated data ingestion
 
-👨‍💻 Author
+## Author
 
 Branton Kieti
 Entrepreneur | Data Scientist | Data Engineer
 
 Passionate about building data-driven systems, ETL workflows, and scalable reporting solutions.
 
-📄 License
+## License
 
 This project is licensed under the MIT License.
